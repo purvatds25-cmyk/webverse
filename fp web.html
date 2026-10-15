@@ -1,0 +1,1899 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CommunityReads | Digital Community Library</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f6f8fc;
+    color: #25324a;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    width: 100%;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(15px);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    box-shadow: 0 3px 20px rgba(0,0,0,0.08);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    color: #3155d9;
+}
+
+.logo span {
+    color: #ff8a4c;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #34415a;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #3155d9;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 650px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 70px 8%;
+
+    background:
+        radial-gradient(circle at 90% 20%, #ffd9c4, transparent 25%),
+        radial-gradient(circle at 10% 80%, #cdd8ff, transparent 30%),
+        linear-gradient(135deg, #f8fbff, #eef2ff);
+
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.badge {
+    display: inline-block;
+
+    padding: 9px 18px;
+
+    background: #e8edff;
+    color: #3155d9;
+
+    border-radius: 30px;
+
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 58px;
+    line-height: 1.1;
+    color: #1e2a44;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: #3155d9;
+}
+
+.hero p {
+    font-size: 19px;
+    color: #667085;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 14px 25px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    transition: 0.3s;
+}
+
+.primary-btn {
+    background: #3155d9;
+    color: white;
+    box-shadow: 0 10px 25px rgba(49,85,217,0.3);
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    background: #2443b5;
+}
+
+.secondary-btn {
+    background: white;
+    color: #3155d9;
+    border: 1px solid #d8def5;
+}
+
+.secondary-btn:hover {
+    transform: translateY(-3px);
+}
+
+
+/* HERO BOOK */
+
+.hero-book {
+    width: 320px;
+    height: 400px;
+
+    background: linear-gradient(145deg, #3155d9, #667eea);
+
+    border-radius: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 30px 60px rgba(49,85,217,0.25);
+
+    transform: rotate(4deg);
+
+    animation: floating 4s ease-in-out infinite;
+}
+
+.book-cover {
+    width: 250px;
+    height: 320px;
+
+    background: rgba(255,255,255,0.95);
+
+    border-radius: 15px;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.book-cover .icon {
+    font-size: 70px;
+    margin-bottom: 20px;
+}
+
+.book-cover h2 {
+    color: #3155d9;
+    margin-bottom: 10px;
+}
+
+.book-cover p {
+    color: #667085;
+}
+
+@keyframes floating {
+
+    0%,100% {
+        transform: translateY(0) rotate(4deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(4deg);
+    }
+
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+
+    gap: 20px;
+
+    padding: 35px 8%;
+
+    background: white;
+}
+
+.stat {
+    text-align: center;
+    padding: 25px;
+
+    border-radius: 18px;
+
+    background: #f8f9ff;
+
+    transition: 0.3s;
+}
+
+.stat:hover {
+    transform: translateY(-5px);
+}
+
+.stat .icon {
+    font-size: 35px;
+}
+
+.stat h2 {
+    color: #3155d9;
+    font-size: 32px;
+    margin: 5px 0;
+}
+
+.stat p {
+    color: #788399;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section {
+    padding: 80px 8%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-heading span {
+    color: #ff8a4c;
+    font-weight: 700;
+}
+
+.section-heading h2 {
+    font-size: 38px;
+    color: #1e2a44;
+    margin: 8px 0;
+}
+
+.section-heading p {
+    color: #778196;
+    max-width: 650px;
+    margin: auto;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 35px;
+}
+
+.search {
+    width: 600px;
+    padding: 16px 20px;
+
+    border: 1px solid #dfe3ee;
+
+    border-radius: 15px;
+
+    outline: none;
+
+    font-size: 16px;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.search:focus {
+    border-color: #3155d9;
+}
+
+
+/* =========================
+   BOOKS
+========================= */
+
+.books {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(230px,1fr));
+
+    gap: 25px;
+}
+
+.book-card {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(30,42,68,0.08);
+
+    transition: 0.35s;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.book-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(30,42,68,0.13);
+}
+
+.book-icon {
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: #eef2ff;
+
+    font-size: 32px;
+
+    margin-bottom: 18px;
+}
+
+.book-card h3 {
+    color: #263451;
+    margin-bottom: 8px;
+}
+
+.category {
+    color: #3155d9;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.book-card p {
+    color: #7a8498;
+    margin: 12px 0 18px;
+}
+
+.book-btn {
+    width: 100%;
+
+    padding: 11px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #eef2ff;
+
+    color: #3155d9;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.book-btn:hover {
+    background: #3155d9;
+    color: white;
+}
+
+
+/* =========================
+   SURVEY
+========================= */
+
+.survey-area {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 40px;
+
+    align-items: center;
+}
+
+.survey-info h2 {
+    font-size: 40px;
+    color: #1e2a44;
+    margin-bottom: 20px;
+}
+
+.survey-info p {
+    color: #707b90;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.features {
+    margin-top: 25px;
+}
+
+.features div {
+    margin: 13px 0;
+    font-weight: 600;
+}
+
+.survey-form {
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 22px;
+
+    box-shadow: 0 15px 40px rgba(30,42,68,0.1);
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid #dfe3ee;
+
+    border-radius: 10px;
+
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #3155d9;
+}
+
+.submit-btn {
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #3155d9;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   TRACKER
+========================= */
+
+.tracker-box {
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 40px;
+
+    background:
+        linear-gradient(135deg,#3155d9,#6c7ff0);
+
+    color: white;
+
+    border-radius: 25px;
+
+    text-align: center;
+
+    box-shadow: 0 20px 50px rgba(49,85,217,0.25);
+}
+
+.tracker-box h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.tracker-box p {
+    opacity: 0.9;
+}
+
+.tracker-input {
+    margin: 25px 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.tracker-input input {
+    width: 250px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    outline: none;
+}
+
+.tracker-input button {
+    padding: 13px 22px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #ff9b64;
+
+    color: white;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.progress-bg {
+    height: 15px;
+
+    background: rgba(255,255,255,0.25);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+
+    width: 0%;
+
+    background: white;
+
+    border-radius: 20px;
+
+    transition: 0.5s;
+}
+
+.progress-text {
+    margin-top: 12px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   EVENTS
+========================= */
+
+.events {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(250px,1fr));
+
+    gap: 25px;
+}
+
+.event {
+    background: white;
+
+    padding: 28px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+
+    transition: 0.3s;
+}
+
+.event:hover {
+    transform: translateY(-7px);
+}
+
+.event-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.event h3 {
+    color: #263451;
+}
+
+.event p {
+    color: #7a8498;
+    margin-top: 10px;
+}
+
+
+/* =========================
+   REQUEST
+========================= */
+
+.request {
+    max-width: 700px;
+
+    margin: auto;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 22px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+.request textarea {
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid #dfe3ee;
+
+    border-radius: 10px;
+
+    resize: vertical;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #17213a;
+
+    color: white;
+
+    padding: 45px 8%;
+
+    text-align: center;
+}
+
+footer h2 {
+    margin-bottom: 10px;
+}
+
+footer p {
+    color: #b9c0d0;
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+.toast {
+    position: fixed;
+
+    bottom: 25px;
+
+    right: 25px;
+
+    background: #1e2a44;
+
+    color: white;
+
+    padding: 16px 22px;
+
+    border-radius: 12px;
+
+    display: none;
+
+    z-index: 2000;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px) {
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 50px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .survey-area {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width:650px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero-book {
+        width: 260px;
+        height: 330px;
+    }
+
+    .book-cover {
+        width: 200px;
+        height: 260px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .tracker-input {
+        flex-direction: column;
+    }
+
+    .tracker-input input {
+        width: 100%;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        📚 Community<span>Reads</span>
+    </div>
+
+    <nav class="nav-links">
+
+        <a href="#home">Home</a>
+
+        <a href="#library">Library</a>
+
+        <a href="#survey">Survey</a>
+
+        <a href="#tracker">Tracker</a>
+
+        <a href="#events">Events</a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            📖 Read • Learn • Grow
+        </div>
+
+        <h1>
+            Building a
+            <span>Reading Community</span>
+            Together.
+        </h1>
+
+        <p>
+            CommunityReads is a digital community library platform
+            designed to understand reading habits, improve access to
+            books and encourage people to develop regular reading habits.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button
+                class="btn primary-btn"
+                onclick="goToLibrary()">
+
+                Explore Library →
+
+            </button>
+
+            <button
+                class="btn secondary-btn"
+                onclick="goToSurvey()">
+
+                Take Survey
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-book">
+
+        <div class="book-cover">
+
+            <div class="icon">📚</div>
+
+            <h2>CommunityReads</h2>
+
+            <p>
+                Discover books.<br>
+                Build habits.<br>
+                Share knowledge.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<div class="stats">
+
+    <div class="stat">
+
+        <div class="icon">📚</div>
+
+        <h2 id="bookCount">8</h2>
+
+        <p>Books Available</p>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="icon">👥</div>
+
+        <h2 id="surveyCount">0</h2>
+
+        <p>Survey Participants</p>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="icon">🔥</div>
+
+        <h2 id="readingDays">0</h2>
+
+        <p>Reading Days</p>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="icon">🏆</div>
+
+        <h2>30</h2>
+
+        <p>Day Challenge</p>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     LIBRARY
+========================= -->
+
+<section class="section" id="library">
+
+    <div class="section-heading">
+
+        <span>OUR COLLECTION</span>
+
+        <h2>Explore Our Library</h2>
+
+        <p>
+            Find educational, inspirational and informative
+            books for different age groups and interests.
+        </p>
+
+    </div>
+
+
+    <div class="search-container">
+
+        <input
+            class="search"
+            id="searchInput"
+            type="text"
+            placeholder="🔍 Search books, categories..."
+            onkeyup="searchBooks()"
+        >
+
+    </div>
+
+
+    <div class="books" id="bookList">
+
+
+        <div class="book-card">
+
+            <div class="book-icon">🔥</div>
+
+            <span class="category">BIOGRAPHY</span>
+
+            <h3>Wings of Fire</h3>
+
+            <p>
+                An inspirational journey of
+                Dr. A.P.J. Abdul Kalam.
+            </p>
+
+            <button
+                class="book-btn"
+                onclick="requestBook('Wings of Fire')">
+
+                Request Book
+
+            </button>
+
+        </div>
+
+
+
+        <div class="book-card">
+
+            <div class="book-icon">🎓</div>
+
+            <span class="category">EDUCATION</span>
+
+            <h3>The Power of Reading</h3>
+
+            <p>
+                Discover the importance of
+                reading and continuous learning.
+            </p>
+
+            <button
+                class="book-btn"
+                onclick="requestBook('The Power of Reading')">
+
+                Request Book
+
+            </button>
+
+        </div>
+
+
+
+        <div class="book-card">
+
+            <div class="book-icon">🚀</div>
+
+            <span class="category">TECHNOLOGY</span>
+
+            <h3>Basic Computer Science</h3>
+
+            <p>
+                Learn fundamental computer
+                science concepts.
+            </p>
+
+            <button
+                class="book-btn"
+                onclick="requestBook('Basic Computer Science')">
+
+                Request Book
+
+            </button>
+
+        </div>
+
+
+
+        <div class="book-card">
+
+            <div class="book-icon">🌎</div>
+
+            <span class="category">KNOWLEDGE</span>
+
+            <h3>General Knowledge</h3>
+
+            <p>
+                Interesting facts and useful
+                general knowledge.
+            </p>
+
+            <button
+                class="book-btn"
+                onclick="requestBook('General Knowledge')">
+
+                Request Book
+
+            </button>
+
+        </div>
+
+
+
+        <div class="book-card">
+
+            <div class="book-icon">🔬</div>
+
+            <span class="category">SCIENCE</span>
+
+            <h3>Science Around Us</h3>
+
+            <p>
+                Explore science through
+                everyday life.
+            </p>
+
+            <button
+                class="book-btn"
+                onclick="requestBook('Science Around Us')">
+
+                Request Book
+
+            </button>
+
+        </div>
+
+
+
+        <div class="book-card">
+
+            <div class="book-icon">📖</div>
+
+            <span class="category">LANGUAGE</span>
+
+            <h3>English Grammar</h3>
+
+            <p>
+                Improve your grammar and
+                communication skills.
+            </p>
+
+            <button
+                class="book-btn"
+                onclick="requestBook('English Grammar')">
+
+                Request Book
+
+            </button>
+
+        </div>
+
+
+
+        <div class="book-card">
+
+            <div class="book-icon">🏛️</div>
+
+            <span class="category">HISTORY</span>
+
+            <h3>Indian History</h3>
+
+            <p>
+                Learn about India's important
+                historical events.
+            </p>
+
+            <button
+                class="book-btn"
+                onclick="requestBook('Indian History')">
+
+                Request Book
+
+            </button>
+
+        </div>
+
+
+
+        <div class="book-card">
+
+            <div class="book-icon">🧒</div>
+
+            <span class="category">CHILDREN</span>
+
+            <h3>Stories for Children</h3>
+
+            <p>
+                Fun and interesting stories
+                for young readers.
+            </p>
+
+            <button
+                class="book-btn"
+                onclick="requestBook('Stories for Children')">
+
+                Request Book
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     SURVEY
+========================= -->
+
+<section class="section" id="survey">
+
+    <div class="survey-area">
+
+
+        <div class="survey-info">
+
+            <span class="category">
+                COMMUNITY SURVEY
+            </span>
+
+            <h2>
+                Tell Us About Your
+                Reading Habits.
+            </h2>
+
+            <p>
+                Your responses help us understand how people
+                in the community read, what types of books
+                they prefer and what difficulties they face
+                while accessing reading resources.
+            </p>
+
+
+            <div class="features">
+
+                <div>✅ Understand reading frequency</div>
+
+                <div>✅ Identify preferred book categories</div>
+
+                <div>✅ Find problems in accessing books</div>
+
+                <div>✅ Improve community library services</div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="survey-form">
+
+            <form onsubmit="submitSurvey(event)">
+
+
+                <div class="form-group">
+
+                    <label>Your Name</label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>Reading Frequency</label>
+
+                    <select id="frequency" required>
+
+                        <option value="">
+                            Select frequency
+                        </option>
+
+                        <option>Daily</option>
+
+                        <option>Several times a week</option>
+
+                        <option>Once a week</option>
+
+                        <option>Occasionally</option>
+
+                        <option>Rarely</option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>Preferred Book Type</label>
+
+                    <select id="category" required>
+
+                        <option value="">
+                            Select category
+                        </option>
+
+                        <option>Educational</option>
+
+                        <option>Story Books</option>
+
+                        <option>Science</option>
+
+                        <option>History</option>
+
+                        <option>Technology</option>
+
+                        <option>Biography</option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>Do you use a library?</label>
+
+                    <select id="libraryUse" required>
+
+                        <option value="">
+                            Select option
+                        </option>
+
+                        <option>Yes</option>
+
+                        <option>No</option>
+
+                        <option>Sometimes</option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>Main difficulty</label>
+
+                    <select id="problem" required>
+
+                        <option value="">
+                            Select problem
+                        </option>
+
+                        <option>Limited books</option>
+
+                        <option>Lack of time</option>
+
+                        <option>Lack of awareness</option>
+
+                        <option>Library is far away</option>
+
+                        <option>Internet/device problems</option>
+
+                        <option>No major difficulty</option>
+
+                    </select>
+
+                </div>
+
+
+
+                <button class="submit-btn">
+
+                    Submit Survey →
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     READING TRACKER
+========================= -->
+
+<section class="section">
+
+    <div class="section-heading">
+
+        <span>BUILD A HABIT</span>
+
+        <h2>Track Your Reading Journey</h2>
+
+        <p>
+            Small reading habits can create big changes.
+        </p>
+
+    </div>
+
+
+    <div class="tracker-box">
+
+        <h2>📖 Your Reading Progress</h2>
+
+        <p>
+            Enter the number of days you have completed
+            your reading goal.
+        </p>
+
+
+        <div class="tracker-input">
+
+            <input
+                type="number"
+                id="daysInput"
+                min="1"
+                max="30"
+                placeholder="Reading days (1-30)"
+            >
+
+            <button onclick="updateTracker()">
+                Update Progress
+            </button>
+
+        </div>
+
+
+        <div class="progress-bg">
+
+            <div
+                class="progress"
+                id="progress">
+            </div>
+
+        </div>
+
+
+        <div
+            class="progress-text"
+            id="progressText">
+
+            0 / 30 days completed
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     EVENTS
+========================= -->
+
+<section class="section" id="events">
+
+    <div class="section-heading">
+
+        <span>COMMUNITY</span>
+
+        <h2>Reading Events</h2>
+
+        <p>
+            Connect with readers and make reading a
+            community activity.
+        </p>
+
+    </div>
+
+
+    <div class="events">
+
+
+        <div class="event">
+
+            <div class="event-icon">📚</div>
+
+            <h3>Community Reading Club</h3>
+
+            <p>
+                A weekly session where community members
+                read and share their thoughts.
+            </p>
+
+        </div>
+
+
+
+        <div class="event">
+
+            <div class="event-icon">💬</div>
+
+            <h3>Book Discussion</h3>
+
+            <p>
+                Discuss interesting books and exchange
+                ideas with other readers.
+            </p>
+
+        </div>
+
+
+
+        <div class="event">
+
+            <div class="event-icon">🎁</div>
+
+            <h3>Book Donation Drive</h3>
+
+            <p>
+                Donate useful books and help improve
+                community library resources.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     BOOK REQUEST
+========================= -->
+
+<section class="section">
+
+    <div class="section-heading">
+
+        <span>LIBRARY SUPPORT</span>
+
+        <h2>Can't Find Your Book?</h2>
+
+        <p>
+            Send a request and let the community library
+            know which book you need.
+        </p>
+
+    </div>
+
+
+    <div class="request">
+
+        <form onsubmit="submitRequest(event)">
+
+            <div class="form-group">
+
+                <label>Your Name</label>
+
+                <input
+                    type="text"
+                    id="requestName"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Book Name</label>
+
+                <input
+                    type="text"
+                    id="requestBook"
+                    placeholder="Enter book name"
+                    required
+                >
+
+            </div>
+
+
+            <label>Reason / Requirement</label>
+
+            <textarea
+                id="requestReason"
+                rows="4"
+                placeholder="Tell us why you need this book..."
+                required>
+            </textarea>
+
+
+            <button class="submit-btn">
+
+                Submit Book Request
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <h2>📚 CommunityReads</h2>
+
+    <p>
+        Digital Community Library & Reading Habit Survey
+    </p>
+
+    <br>
+
+    <p>
+        Developed as a community field study digital solution.
+    </p>
+
+</footer>
+
+
+
+<!-- =========================
+     TOAST
+========================= -->
+
+<div class="toast" id="toast"></div>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function goToLibrary() {
+
+    document.getElementById("library")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+function goToSurvey() {
+
+    document.getElementById("survey")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* =========================
+   TOAST MESSAGE
+========================= */
+
+function showToast(message) {
+
+    let toast =
+        document.getElementById("toast");
+
+    toast.innerText = message;
+
+    toast.style.display = "block";
+
+    setTimeout(function() {
+
+        toast.style.display = "none";
+
+    }, 3000);
+
+}
+
+
+/* =========================
+   BOOK SEARCH
+========================= */
+
+function searchBooks() {
+
+    let search =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    let books =
+        document.querySelectorAll(".book-card");
+
+
+    books.forEach(function(book) {
+
+        let text =
+            book.innerText.toLowerCase();
+
+
+        if (text.includes(search)) {
+
+            book.style.display = "block";
+
+        }
+
+        else {
+
+            book.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* =========================
+   BOOK REQUEST BUTTON
+========================= */
+
+function requestBook(bookName) {
+
+    document.getElementById("requestBook")
+        .value = bookName;
+
+
+    document.querySelector(".request")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+
+    showToast(
+        "Book selected: " + bookName
+    );
+
+}
+
+
+/* =========================
+   SURVEY
+========================= */
+
+let surveyParticipants = 0;
+
+
+function submitSurvey(event) {
+
+    event.preventDefault();
+
+
+    let name =
+        document.getElementById("name").value;
+
+
+    surveyParticipants++;
+
+
+    document.getElementById("surveyCount")
+        .innerText = surveyParticipants;
+
+
+    showToast(
+        "Thank you " +
+        name +
+        "! Survey submitted successfully."
+    );
+
+
+    document.querySelector("#survey form")
+        .reset();
+
+}
+
+
+/* =========================
+   READING TRACKER
+========================= */
+
+function updateTracker() {
+
+    let days =
+        Number(
+            document.getElementById("daysInput").value
+        );
+
+
+    if (days < 1 || days > 30 || isNaN(days)) {
+
+        showToast(
+            "Please enter a number between 1 and 30."
+        );
+
+        return;
+
+    }
+
+
+    let percentage =
+        (days / 30) * 100;
+
+
+    document.getElementById("progress")
+        .style.width =
+        percentage + "%";
+
+
+    document.getElementById("progressText")
+        .innerText =
+        days +
+        " / 30 days completed";
+
+
+    document.getElementById("readingDays")
+        .innerText = days;
+
+
+    if (days === 30) {
+
+        showToast(
+            "🎉 Congratulations! You completed the 30-day challenge!"
+        );
+
+    }
+
+    else {
+
+        showToast(
+            "Great! Keep reading every day 📖"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   BOOK REQUEST FORM
+========================= */
+
+function submitRequest(event) {
+
+    event.preventDefault();
+
+
+    let name =
+        document.getElementById("requestName").value;
+
+
+    let book =
+        document.getElementById("requestBook").value;
+
+
+    showToast(
+        "📚 Request submitted for " +
+        book +
+        "!"
+    );
+
+
+    document.querySelector(".request form")
+        .reset();
+
+}
+
+</script>
+
+
+</body>
+</html>
